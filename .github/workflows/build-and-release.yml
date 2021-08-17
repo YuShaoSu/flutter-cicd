@@ -52,12 +52,20 @@ jobs:
       - run: flutter build apk
       - run: flutter build ios --release --no-codesign
 
-      - run: mkdir dist
-      - run: mv build/ios/iphoneos/Runner.app dist
+      - name: Save built app
+        run: |
+          mkdir -p dist/ios
+          mkdir -p dist/android
+          mv build/ios/iphoneos/Runner.app dist/ios
+          mv build/app/outputs/flutter-apk/app-release.apk dist/android
+          cd dist
+          zip -r ios.zip ios
+          zip -r android.zip android
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: dist-without-markdown
+          name: build
           path: |
             dist
+        retention-days: 10
