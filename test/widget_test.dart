@@ -26,5 +26,16 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+    // wrong case
+    // expect(find.text('2'), findsOneWidget);
+    final titleFinder = find.text('Flutter Demo Home Page');
+    expect(titleFinder, findsOneWidget);
+  });
+
+  // Define a test. The TestWidgets function also provides a WidgetTester
+  // to work with. The WidgetTester allows you to build and interact
+  // with widgets in the test environment.
+  testWidgets('MyWidget has a title and message', (WidgetTester tester) async {
+    // Test code goes here.
   });
 }
