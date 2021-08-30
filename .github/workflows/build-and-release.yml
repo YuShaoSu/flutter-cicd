@@ -78,4 +78,4 @@ jobs:
           name: build
           path: |
             dist
-        retention-days: 10
+          retention-days: 10
